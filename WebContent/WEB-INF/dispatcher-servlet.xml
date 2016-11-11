@@ -30,7 +30,13 @@
 	</bean>
 
 	<bean name="noticeDao" class="com.newlecture.web.dao.mybatis.MyBatisNoticeDao">
-		<property name="session" ref="sqlSession"></property>
+		<property name="sqlSession" ref="sqlSession"></property>
+	</bean>
+	<bean name="noticeFileDao" class="com.newlecture.web.dao.mybatis.MyBatisNoticeFileDao">
+		<property name="sqlSession" ref="sqlSession"></property>
+	</bean>
+	<bean name="noticeMemberDao" class="com.newlecture.web.dao.mybatis.MyBatisMemberDao">
+		<property name="sqlSession" ref="sqlSession"></property>
 	</bean>
 	
 	<!-- 타일즈 설정 2016.11.11-->
@@ -39,14 +45,13 @@
 	</bean>
 
 	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
 		<property name="order" value="1" />
 	</bean>
-
-
-
-
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order"  value="2"/>
+   </bean>   
 
 </beans>
 

@@ -9,56 +9,45 @@ import com.newlecture.web.dao.NoticeFileDao;
 import com.newlecture.web.entities.NoticeFile;
 
 public class MyBatisNoticeFileDao implements NoticeFileDao{
-	private SqlSessionFactory ssf;
+	private SqlSession sqlSession;
 	
-	public MyBatisNoticeFileDao(){
-		ssf = NewlecSessionFactoryBuilder.getSqlsessionfactory();
+	public void setsqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
 	}
 	
 	@Override
 	public List<NoticeFile> getList(String noticeCode) {
-		SqlSession session = ssf.openSession();
-		NoticeFileDao noticeFileDao = session.getMapper(NoticeFileDao.class);
+		NoticeFileDao noticeFileDao = sqlSession.getMapper(NoticeFileDao.class);
 		
 		List<NoticeFile> list = noticeFileDao.getList(noticeCode);
-		session.close();
 		
 		return list;
 	}
 
 	@Override
 	public int insert(NoticeFile file) {
-		SqlSession session = ssf.openSession();
-		NoticeFileDao noticeFileDao = session.getMapper(NoticeFileDao.class);
+		NoticeFileDao noticeFileDao = sqlSession.getMapper(NoticeFileDao.class);
 		
 		int result = noticeFileDao.insert(file);
 		
-		session.commit();
-		session.close();
 		return result;
 	}
 
 	@Override
 	public int update(NoticeFile file) {
-		SqlSession session = ssf.openSession();
-		NoticeFileDao noticeFileDao = session.getMapper(NoticeFileDao.class);
+		NoticeFileDao noticeFileDao = sqlSession.getMapper(NoticeFileDao.class);
 		
 		int result = noticeFileDao.update(file);
 		
-		session.commit();
-		session.close();
 		return result;
 	}
 
 	@Override
 	public int delete(String code) {
-		SqlSession session = ssf.openSession();
-		NoticeFileDao noticeFileDao = session.getMapper(NoticeFileDao.class);
+		NoticeFileDao noticeFileDao = sqlSession.getMapper(NoticeFileDao.class);
 		
 		int result = noticeFileDao.delete(code);
 		
-		session.commit();
-		session.close();
 		return result;
 	}
 }

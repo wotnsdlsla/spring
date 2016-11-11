@@ -10,23 +10,23 @@ import com.newlecture.web.entities.Notice;
 import com.newlecture.web.model.NoticeModel;
 
 public class MyBatisNoticeDao implements NoticeDao{
-	private SqlSession session;
+	private SqlSession sqlSession;
 	
-	public void setSession(SqlSession session) {
-		this.session = session;
+	public void setsqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
 	}
 
 	@Override
 	public Notice get(String code){
 		
-		NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
 		
 		return noticeDao.get(code);
 	}
 
 	@Override
 	public List<NoticeModel> getList(int page, String field, String query){
-		NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
 		
 		List<NoticeModel> result=noticeDao.getList(page, field, query);
 		
@@ -47,7 +47,7 @@ public class MyBatisNoticeDao implements NoticeDao{
 
 	@Override
 	public int insert(Notice notice){
-		NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
 		
 		int result = noticeDao.insert(notice);
 		
@@ -56,7 +56,7 @@ public class MyBatisNoticeDao implements NoticeDao{
 
 	@Override
 	public int update(Notice notice){
-		NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
 		
 		int result = noticeDao.update(notice);
 		
@@ -65,7 +65,7 @@ public class MyBatisNoticeDao implements NoticeDao{
 
 	@Override
 	public int delete(String code){
-		NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
 		
 		int result = noticeDao.delete(code);
 		
@@ -74,7 +74,7 @@ public class MyBatisNoticeDao implements NoticeDao{
 
 	@Override
 	public int getCount(String field, String query) {
-		NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
 		
 		int count = noticeDao.getCount(field, query);
 		
@@ -83,7 +83,7 @@ public class MyBatisNoticeDao implements NoticeDao{
 
 	@Override
 	public String getlastCode() {
-		NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
 		
 		String code = noticeDao.getlastCode();
 	
@@ -92,7 +92,7 @@ public class MyBatisNoticeDao implements NoticeDao{
 
 	@Override
 	public Notice getPrev(String code) {
-		NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
 		
 		Notice notice = noticeDao.getPrev(code);
 		
@@ -101,7 +101,7 @@ public class MyBatisNoticeDao implements NoticeDao{
 
 	@Override
 	public Notice getNext(String code) {
-		NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
 		
 		Notice notice = noticeDao.getNext(code);
 		
@@ -110,7 +110,7 @@ public class MyBatisNoticeDao implements NoticeDao{
 
 	@Override
 	public int hitUp(String code) {
-		NoticeDao noticeDao = session.getMapper(NoticeDao.class);
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
 		
 		int result = noticeDao.hitUp(code);
 		

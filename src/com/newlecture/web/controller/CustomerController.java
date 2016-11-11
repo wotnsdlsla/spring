@@ -22,6 +22,7 @@ public class CustomerController {
 	
 	@Autowired
 	private NoticeDao noticeDao;
+	@Autowired
 	private NoticeFileDao noticeFileDao;
 	
 	 public CustomerController() {
@@ -84,6 +85,7 @@ public class CustomerController {
 		model.addAttribute("files", noticeFiles);
 
 		return "/WEB-INF/views/customer/notice-detail.jsp";
+		//return "customer.notice-detail";
 
 	}
 
