@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="com.newlecture.web.controller"></context:component-scan>
+
+	<bean name="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="url"
+			value="jdbc:sqlserver://dev.newlecture.com:1433;databaseName=newlecture3" />
+		<property name="username" value="jsp" />
+		<property name="password" value="dclass" />
+	</bean>
+
+	<!-- 마이바이트 config.xml 설정 파일을 로드하는 팩토리 갱체 생성을 지시 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations"
+			value="classpath:com/newlecture/web/dao/mybatis/mapper/*.xml" /> <!-- /*.xml패턴을쓴다 -->
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+
+	<bean name="noticeDao" class="com.newlecture.web.dao.mybatis.MyBatisNoticeDao">
+		<property name="session" ref="sqlSession"></property>
+	</bean>
+	
+	<!-- 타일즈 설정 2016.11.11-->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions" value="/WEB-INF/tiles.xml" />
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<property name="order" value="1" />
+	</bean>
+
+
+
+
+
+</beans>
+
+
+<!-- <bean name="b" class="com.newlecture.web.B"/> <bean name="a" class="com.newlecture.web.A"> 
+	<property name="b" ref="b"/> 이렇게 되면 a도 만들고 b도 만들고 이게 인젝션이다 </bean> A a = 
+	new A(); B b = new B(); <bean name="n" class="com.newlecture.web.entities.Notice"> 
+	<property name="SetTitle" ref="Hello"/> set이 없어지고 t가 소문자로 위장한다 <property 
+	name="title" ref="hello"/> </bean> -->
