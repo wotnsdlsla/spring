@@ -9,7 +9,7 @@
 	
 	
 	            <h1 id="logo">
-	            	<img src="${ctx}images/logo.png" alt="뉴렉처 온라인">
+	            	<img src="${ctx}/resource/images/logo.png" alt="뉴렉처 온라인">
 	            </h1>
 	            
 			 <section>
@@ -55,8 +55,8 @@
 	            <nav id="custom-menu">
 	               <h1>고객메뉴</h1>
 	               <ul>
-	                  <li><img src="${ctx}images/txt-mypage.png" alt="마이페이지"></li>
-	                  <li><a href="${ctx}/customer/notice"><img src="${ctx}images/txt-customer.png" alt="고객센터"></a></li>
+	                  <li><img src="${ctx}/resource/images/txt-mypage.png" alt="마이페이지"></li>
+	                  <li><a href="${ctx}/customer/notice"><img src="${ctx}/resource/images/txt-customer.png" alt="고객센터"></a></li>
 	               </ul>
 	            </nav>
 	         </section>

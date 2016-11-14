@@ -49,8 +49,8 @@
             </form>
          </div>
          <div class="table-container">
-            <h3 class="hidden">테이블</h3>
-            <table border="1">
+            <h3 class="hidden">공지사항목록</h3>
+            <table class="table">
                <thead>
                   <tr>
                      <td>번호</td>

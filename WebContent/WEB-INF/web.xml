@@ -25,14 +25,14 @@
 		<servlet-class>com.newlecture.web.dao.mybatis.NewlecSessionFactoryBuilder</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet> -->
-  
 
-	  <servlet>
-     <servlet-name>dispatcher</servlet-name>
-     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-     <servlet-name>dispatcher</servlet-name>
-     <url-pattern>/</url-pattern>
-  </servlet-mapping>
+
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern> <!-- 전부다 dispatcher로 실행 그래서 예외 항목을 줘야한다 -->
+	</servlet-mapping>
 </web-app>
